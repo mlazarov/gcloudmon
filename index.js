@@ -47,18 +47,17 @@ gcloudmon.prototype.createMetric = function (name, labels, callback){
 
 }
 
-gcloudmon.prototype.deleteMetric = function (label, callback){
+gcloudmon.prototype.deleteMetric = function (name, callback){
     var self = this;
 
     var params = { auth: self._jwtClient,
                    project: self.project,
-                   metric: self._transformLabel(label)
-};
-console.log(params);
+                   metric: encodeURIComponent(self._transformLabel(name))
+    };
 
     cloudmonitoring.metricDescriptors.delete(params, function (err, data) {
         if (err) {
-            err.metric = label;
+            err.metric = name;
             self.emit("error", err);
         }
         if(typeof(callback) === 'function') callback(err, data);
