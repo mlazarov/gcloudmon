@@ -1,6 +1,6 @@
 {
   "name": "gcloudmon",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple interface Wrapper for Google Cloud Monitoring",
   "main": "index.js",
   "repository": {
@@ -10,12 +10,11 @@
   "keywords": [
     "google",
     "gce",
-    "cloudmonitoring"
+    "cloudmonitoring",
+    "stackdriver",
+    "monitoring"
   ],
-  "author": {
-    "name": "Martin Lazarov",
-    "email": "martin@lazarov.bg"
-  },
+  "author": "Martin Lazarov <martin@lazarov.bg>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mlazarov/gcloudmon/issues"
@@ -26,9 +25,9 @@
     "util": "^0.10.3"
   },
   "maintainers": [
-    {
-      "name": "mlazarov",
-      "email": "martin@lazarov.bg"
-    }
-  ]
+    "mlazarov <martin@lazarov.bg>"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

@@ -68,7 +68,9 @@ gcloudmon.deleteMetric('/your/metric/one');
 
 ## Links
 
-Available Google metrics: https://cloud.google.com/monitoring/api/metrics
+[Available Google metrics](https://cloud.google.com/monitoring/api/metrics)
+
+[Google CloudMonitoring API beta nodejs client source code](https://github.com/google/google-api-nodejs-client/blob/master/apis/cloudmonitoring/v2beta2.js)
 
 This module is based on [iamat/google-cloudmonitoring](https://github.com/iamat/google-cloudmonitoring/)
 
