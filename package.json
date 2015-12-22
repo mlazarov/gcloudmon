@@ -1,6 +1,6 @@
 {
   "name": "gcloudmon",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple interface Wrapper for Google Cloud Monitoring",
   "main": "index.js",
   "repository": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/mlazarov/gcloudmon",
   "dependencies": {
-    "googleapis": "^2.0.4",
+    "googleapis": "^2.1.7",
     "util": "^0.10.3"
   },
   "maintainers": [
