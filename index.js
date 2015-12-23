@@ -148,7 +148,7 @@ gcloudmon.prototype.setValues = function (values, callback) {
             err.values = values;
             self.emit("error", err);
         }
-    if(typeof(callback) === 'function') callback(err, data);
+        if(typeof(callback) === 'function') callback(err, data);
     });
 };
 
@@ -158,7 +158,7 @@ gcloudmon.prototype._transformLables = function (labels) {
 
     Object.keys(labels).map(function (label) {
         full_label = self._transformLabel(label);
-    l[full_label] = labels[label];
+        l[full_label] = labels[label];
     });
 
     return l;
