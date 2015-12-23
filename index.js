@@ -20,14 +20,19 @@ var gcloudmon = function (options) {
 
 util.inherits(gcloudmon, EventEmitter);
 
-gcloudmon.prototype.createMetric = function (name, labels, callback){
+gcloudmon.prototype.createMetric = function (name, labels, type, callback){
     var self = this;
+
+    if(typeof(type) === 'function') {
+        callback = type;
+        type = undefined;
+    }
 
     var point = {
         "name": "custom.cloudmonitoring.googleapis.com/"+name,
         "typeDescriptor": {
             "metricType": "gauge",
-            "valueType": "int64"
+            "valueType": type ? type : "int64"
         },
         "labels": labels
     }
@@ -95,7 +100,7 @@ gcloudmon.prototype.setValue = function (name, value, labels, callback) {
                 "point": {
                     "start": (new Date()).toISOString(),
                     "end": (new Date()).toISOString(),
-                    "int64Value": value
+                    [Number.isInteger(value) ? "int64Value" : "doubleValue"]: value
                 }
             }
         ]
@@ -128,7 +133,7 @@ gcloudmon.prototype.setValues = function (values, callback) {
                 "point": {
                     "start": (new Date()).toISOString(),
                     "end": (new Date()).toISOString(),
-                    "int64Value": v.value
+                    [Number.isInteger(v.value) ? "int64Value" : "doubleValue"]: v.value
                 }
             };
         })
@@ -143,7 +148,7 @@ gcloudmon.prototype.setValues = function (values, callback) {
             err.values = values;
             self.emit("error", err);
         }
-	if(typeof(callback) === 'function') callback(err, data);
+    if(typeof(callback) === 'function') callback(err, data);
     });
 };
 
@@ -153,7 +158,7 @@ gcloudmon.prototype._transformLables = function (labels) {
 
     Object.keys(labels).map(function (label) {
         full_label = self._transformLabel(label);
-	l[full_label] = labels[label];
+    l[full_label] = labels[label];
     });
 
     return l;
