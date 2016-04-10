@@ -1,48 +1,48 @@
 
 var gcloudmon = require("./");
 
-var gcloudmon = new gcloudmon({ project: "project-name",
-                    authJSON: require("./key.json") });
-
-var value = 69;
+var gcloudmon = new gcloudmon({ project: "your-project-id",
+                    authJSON: require("./your-JSON-key.json") });
 
 gcloudmon.on("error", function (err) {
     console.log("Something bad happened:", err.message);
 })
 
-
 // List metrics
-gcloudmon.listMetrics(function (err,data){
-    console.log('List metrics:', err, data.metrics);
+gcloudmon.listMetricDescriptors(function (err,data){
+    console.log(err, data);
 });
 
-// Define custom labels
-labels = [
-    {
-        "key": "custom.cloudmonitoring.googleapis.com/your/metric/one",
-        "description": "Metric One"
-    },
-    {
-        "key": "custom.cloudmonitoring.googleapis.com/your/metric/two",
-        "description": "Metric Two"
-    }
-];
+// List metrics
+gcloudmon.listMonitoredResourceDescriptors(function (err,data){
+    console.log(err, data);
+});
 
+// Custom metric data
+var params = {
+    name: "Custom Metric name",
+    displayName: "Custom Metric",
+    type: 'your/metric',
+    labels: [
+      {
+        key: "type",
+        description: "Data Type",
+        valueType: "string"
+      }
+    ]
+};
 
 // Create custom metric
-gcloudmon.createMetric('/your/metric', labels, function (err,data){
-    console.log(data);
-}
-);
-
+gcloudmon.createMetric(params, function(err,data){
+    console.log(err,data);
+});
 
 // Submit metric data to the cloud
-value = 69;
-gcloudmon.setValue("/your/metric", value, { "/your/metric/one": "gcloudmon" }, function(err,data){
-    console.log('setValue result:', err, data);
+gcloudmon.setValue('your/metric', 69, {labels: {type: 'position'}}, function (err,data){
+    console.log(err,data);
 });
 
 // Delete custom metric
-gcloudmon.deleteMetric('/your/metric',function (err,data){ 
-    console.log('Deleting custom metric:', err, data);
+gcloudmon.deleteMetric('your/metric', function(err,data){
+    console.log(err,data);
 });
