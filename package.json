@@ -1,7 +1,7 @@
 {
   "name": "gcloudmon",
-  "version": "1.0.4",
-  "description": "Simple interface Wrapper for Google Cloud Monitoring",
+  "version": "2.0.0",
+  "description": "Simple interface Wrapper for Google Cloud Monitoring (v3)",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -10,6 +10,7 @@
   "keywords": [
     "google",
     "gce",
+    "gcp",
     "cloudmonitoring",
     "stackdriver",
     "monitoring"
@@ -21,8 +22,7 @@
   },
   "homepage": "https://github.com/mlazarov/gcloudmon",
   "dependencies": {
-    "googleapis": "^2.1.7",
-    "util": "^0.10.3"
+    "googleapis": "^4.0.0"
   },
   "maintainers": [
     "mlazarov <martin@lazarov.bg>"
