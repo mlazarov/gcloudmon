@@ -133,7 +133,7 @@ gcloudmon.prototype.setValue = function(metricType, value, params, callback){
                             endTime: params.intervalEnd || now
                         },
                         value: {
-                            [Number.isInteger(params.metricValue) ? "int64Value" : "doubleValue"]: params.metricValue
+                            [Number.isInteger(value) ? "int64Value" : "doubleValue"]: value
                         }
                     }
                 }]
