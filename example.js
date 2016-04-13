@@ -42,6 +42,26 @@ gcloudmon.setValue('your/metric', 69, {labels: {type: 'position'}}, function (er
     console.log(err,data);
 });
 
+// Submit multiple metrics data to the cloud
+var metrics = [{
+  metricType: 'your/metric',
+  metricValue: 69,
+  labels: {type: 'position'}
+  },
+  {
+    metricType: 'your/metric',
+    metricValue: 96,
+    labels: {type: 'revposition'}
+  },
+  {
+    metricType: 'your/metric2',
+    metricValue: 101,
+    labels: {type: 'unicorns'}
+  }];
+gcloudmon.setValues(metrics, function (err,data){
+    console.log(err,data);
+});
+
 // Delete custom metric
 gcloudmon.deleteMetric('your/metric', function(err,data){
     console.log(err,data);
