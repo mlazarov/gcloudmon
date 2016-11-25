@@ -2,7 +2,7 @@
 var gcloudmon = require("./");
 
 var gcloudmon = new gcloudmon({ project: "your-project-id",
-                    authJSON: require("./your-JSON-key.json") });
+                    keyFilename: "./your-JSON-key.json" });
 
 gcloudmon.on("error", function (err) {
     console.log("Something bad happened:", err.message);
